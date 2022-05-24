@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Fonts\Hujan.ttf" />
+    <None Remove="Fonts\Lobster.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Fonts\Hujan.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Lobster.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Core\Model\" />
+    <Folder Include="Core\ViewModel\" />
+    <Folder Include="Core\View\" />
+    <Folder Include="Icons\Model\" />
+    <Folder Include="Icons\ViewModel\" />
+    <Folder Include="Icons\View\" />
+    <Folder Include="MVVM\View\" />
+    <Folder Include="MVVM\Model\" />
+    <Folder Include="Windows\" />
+  </ItemGroup>
+
+</Project>

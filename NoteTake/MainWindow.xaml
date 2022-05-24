@@ -1,0 +1,97 @@
+﻿<Window x:Class="NoteTake.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NoteTake" xmlns:viewmodel="clr-namespace:NoteTake.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Height="450" Width="800"
+        WindowStyle="None"
+        ResizeMode="CanResizeWithGrip" 
+        AllowsTransparency="True"
+        Background="#262e30">
+
+    <Window.DataContext>
+        <viewmodel:MainViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1">
+            <TextBox x:Name="editorText"
+                     Background="Transparent"
+                     Foreground="White"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"
+                     BorderThickness="0"/>
+        </Grid>
+
+        <Border Background="#3a4345"
+                MouseDown="borderMouseDown">
+
+            <Grid HorizontalAlignment="Stretch">
+                <Label Content="NoteTake"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="LightGray"
+                       FontFamily="Fonts/#Hujan"
+                       FontWeight="SemiBold"
+                       FontSize="25" Background="Transparent"/>
+
+                <StackPanel HorizontalAlignment="Right"
+                                    Orientation="Horizontal">
+                    <Button Content="🗕"
+                                    FontSize="16"
+                                    Click="minimizeButtonClick"
+                                    Style="{StaticResource buttonStyle}"/>
+                    <Button Content="▢"
+                                    FontSize="20"
+                                    FontWeight="ExtraBold"
+                                    Click="maximizeButtonClick"
+                                    Style="{StaticResource buttonStyle}"/>
+                    <Button Content="❌"
+                                    FontSize="15"
+                                    FontWeight="UltraLight"
+                                    Click="closeButtonClick"
+                                    Foreground="#FFC55757"
+                                    Style="{StaticResource buttonStyle}"/>
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Left"
+                            Orientation="Horizontal">
+                    <DockPanel>
+                        <Menu DockPanel.Dock="Top"
+                              FontFamily="Fonts/#Hujan"
+                              FontSize="18"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Center"
+                              BorderThickness="0" Height="35" Width="44"
+                              Style="{StaticResource menuStyle}">
+                            <MenuItem Header="File" Height="35" Width="44" Style="{StaticResource firstMenuItemStyle}">
+                                <MenuItem Header="_New" Click="newClick" Style="{StaticResource menuItemStyle}"/>
+                                <MenuItem Header="_Open" Click="openClick" Style="{StaticResource menuItemStyle}"/>
+                                <Separator/>
+                                <MenuItem Header="_Save" Click="saveClick" Style="{StaticResource menuItemStyle}"/>
+                                <MenuItem Header="_Save as" Click="saveAsClick" Style="{StaticResource menuItemStyle}"/>
+                                <Separator/>
+                                <MenuItem Header="Exit" Click="exitClick" Style="{StaticResource menuItemStyle}"/>
+                            </MenuItem>
+                        </Menu>
+                    </DockPanel>
+
+                    <Slider x:Name="fontSizeSlider" Value="12" Width="100" Minimum="10" Maximum="60"
+                            VerticalAlignment="Center" Margin="10,0,0,0" ValueChanged="fontSize_ValueChanged"/>
+
+                </StackPanel>
+
+            </Grid>
+
+        </Border>
+
+    </Grid>
+</Window>
